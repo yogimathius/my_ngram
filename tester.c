@@ -1,47 +1,12 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-
-void my_ngram(char* str) {
-    char unique_arr[] = {};
-    int counted = 0;
-    printf("i'm here\n");
-    for(int i = 0; i < strlen(str); ++i) {
-        bool been_counted = false;
-        for(int j = 0; j < counted; ++j){
-        if(str[i] == unique_arr[j]) {
-            been_counted = true;
-        }
-        else {
-            for(int t = 0; t < strlen(str); ++t) {
-            if(str[i] == str[t]){
-                ++counted;
-            }
-            }
-            int count;
-            printf("%c:%d\n", str[i], count);
-        }
-
-        }
-    }
-}
-
-int main() {
-  char *str = "abcabca";
-  my_ngram(str);
-  return 0;
-}
-
-
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
+/*
 struct key_value {
   int letter;
   int count;
 };
-/*
+
 void my_ngram2(char *str) {
 #define n strlen(str)
 
@@ -71,35 +36,6 @@ void my_ngram2(char *str) {
   }
 }
 
-/*
-void my_ngram(char* str) {
-  char unique_arr[] = {};
-  int counted = 0;
-  for(int i = 0; i < strlen(str); ++i) {
-    bool been_counted = false;
-    for(int j = 0; j < counted; ++j){
-      if(str[i] == unique_arr[j]) {
-        been_counted = true;
-      }
-      else {
-        for(int t = 0; t < strlen(str); ++t) {
-          if(str[i] == str[t]){
-            ++counted;
-          }
-        }
-        printf("%c:%d\n", str[i], count);
-      }
-
-    }
-  }
-}
-
-int main() {
-  char *str = "        ";
-  my_ngram2(str);
-  return 0;
-}
-
 int main(int argc, char **argv) {
   if (argc == 3) {
     strcat(argv[1], argv[2]);
@@ -110,4 +46,48 @@ int main(int argc, char **argv) {
   }
   
   return 0;
-}*/
+}
+*/
+int my_strlen(char* str) {
+    int i = 0;
+    while(str[i] != '\0') {
+        ++i;
+    }
+    return i;
+}
+
+void my_ngram(char* str) {
+    char unique_arr[] = {};
+    int length = my_strlen(str);
+    int counted = 0;
+    bool been_counted;
+    for(int i = 0; i < length; ++i) {
+        for(int j = 0; j < counted; ++j){
+        if(str[i] == unique_arr[j]) {
+            been_counted = true;
+        }
+        else {
+            for(int t = 0; t < length; ++t) {
+            if(str[i] == str[t]){
+                ++counted;
+            }
+            }
+            int count;
+            printf("%c:%d\n", str[i], count);
+        }
+
+        }
+    }
+}
+
+int main(int argc, char **argv) {
+  if (argc == 3) {
+    strcat(argv[1], argv[2]);
+    my_ngram(argv[1]);
+  }
+  if (argc == 2) {
+    my_ngram(argv[1]);
+  }
+  
+  return 0;
+}

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 int my_strlen(char* str);
 int letter_occurrence(char* str, char letter);
 void my_ngram(char* str);
@@ -43,7 +44,7 @@ void my_ngram(char* str) {
     bool been_counted;
     for(int i = 0; i < length; ++i) {
         int j = 0;
-        while(j <= unique_count){
+        while(j < unique_count){
             if(str[i] == unique_arr[j]){
                 been_counted = true;
                 break;
@@ -61,6 +62,7 @@ void my_ngram(char* str) {
             
     }
 }
+
 
 /*
 struct key_value {

@@ -6,17 +6,20 @@
 int my_strlen(char* str);
 int letter_occurrence(char* str, char letter);
 void my_ngram(char* str);
+char* sort_alphabeticaly(char* str, int length);
 
 int main(int argc, char **argv) {
-  if (argc == 3) {
-    strcat(argv[1], argv[2]);
+    if (argc == 1) {
+        return 0;
+    }
+    if (argc > 2) {
+        int i = 2;
+        while(i <= argc) {
+            strcat(argv[1], argv[i]);
+            ++i;
+        }
+    }
     my_ngram(argv[1]);
-  }
-  if (argc == 2) {
-    my_ngram(argv[1]);
-  }
-  
-  return 0;
 }
 
 /*

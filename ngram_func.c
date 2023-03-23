@@ -20,8 +20,23 @@ int letter_occurrence(char* str, char letter) {
     return count;
 }
 
+char* sort_alphabeticaly(char* str, int length) {
+    char temp_letter;
+    for(int i = 0; i < length - 1; i++) {
+        for(int j = i + 1; j < length; j++) {
+            if(str[i] > str[j]) {
+                temp_letter = str[i];
+                str[i] = str[j];
+                str[j] = temp_letter;
+            }
+        }
+    }
+    return str;
+}
+
 void my_ngram(char* str) {
     int length = my_strlen(str);
+    str = sort_alphabeticaly(str, length);
     char unique_arr[length];
     int unique_count = 0;
     bool been_counted;

@@ -9,12 +9,13 @@ void my_ngram(char* str);
 char* sort_alphabeticaly(char* str, int length);
 
 int main(int argc, char **argv) {
-    if (argc == 1) {
+    if (argc == 0) {
         return 0;
     }
-    if (argc > 2) {
+
+    if (argc > 1) {
         int i = 2;
-        while(i <= argc) {
+        while(i < argc) {
             strcat(argv[1], argv[i]);
             ++i;
         }
